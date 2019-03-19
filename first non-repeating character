@@ -1,0 +1,24 @@
+from collections import defaultdict
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        n=len(s)
+        firstindex=sys.maxsize
+        d=defaultdict(list)
+        
+        for i in range(n):
+            if s[i] in d.keys():
+                d[s[i]].append(i)
+            else:
+                d[s[i]]=[i]
+        for val in d.values():
+            if (len(val)==1 and val[0]<firstindex):
+                firstindex=val[0]
+        if firstindex<sys.maxsize:
+            return firstindex
+        else:
+            return -1
+                
