@@ -1,0 +1,21 @@
+#emails=["testemail@leetcode.com","testemail1@leetcode.com","testemail+david@lee.tcode.com"]
+class Solution(object):
+    def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        s=set()
+        for i in range (len(emails)):
+            str=emails[i]
+            index=str.find('@')
+            str_part1=str[0:index]
+            str_part2=str[index:]
+            newstr = str_part1.replace(".", "")
+            index=newstr.find('+')
+            newstr=newstr[0:index]
+            str=newstr+str_part2
+            if str not in s:
+                s.add(str)
+        return len(s)
+                
